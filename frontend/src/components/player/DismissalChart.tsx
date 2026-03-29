@@ -7,20 +7,20 @@ interface Props {
   data: DismissalStats[];
 }
 
-const COLORS = ["#16a34a", "#f59e0b", "#3b82f6", "#ef4444", "#8b5cf6", "#ec4899"];
+// All five palette colors + two intermediate shades for variety
+const COLORS = ["#22223b", "#4a4e69", "#9a8c98", "#c9ada7", "#f2e9e4", "#6b6580"];
 
 export default function DismissalChart({ data }: Props) {
   if (!data.length)
-    return <div className="text-gray-400 text-sm py-4">No dismissal data available.</div>;
+    return <div className="text-lavender-muted text-sm py-4">No dismissal data available.</div>;
 
-  // Aggregate dismissal types across all bowlers
   const totals = {
-    Bowled: data.reduce((s, d) => s + (d.dismissed_bowled ?? 0), 0),
-    Caught: data.reduce((s, d) => s + (d.dismissed_caught ?? 0), 0),
-    "C&B": data.reduce((s, d) => s + (d.dismissed_caught_bowled ?? 0), 0),
-    LBW: data.reduce((s, d) => s + (d.dismissed_lbw ?? 0), 0),
-    Stumped: data.reduce((s, d) => s + (d.dismissed_stumped ?? 0), 0),
-    "Run Out": data.reduce((s, d) => s + (d.dismissed_run_out ?? 0), 0),
+    Bowled:   data.reduce((s, d) => s + (d.dismissed_bowled ?? 0), 0),
+    Caught:   data.reduce((s, d) => s + (d.dismissed_caught ?? 0), 0),
+    "C&B":    data.reduce((s, d) => s + (d.dismissed_caught_bowled ?? 0), 0),
+    LBW:      data.reduce((s, d) => s + (d.dismissed_lbw ?? 0), 0),
+    Stumped:  data.reduce((s, d) => s + (d.dismissed_stumped ?? 0), 0),
+    "Run Out":data.reduce((s, d) => s + (d.dismissed_run_out ?? 0), 0),
   };
 
   const pieData = Object.entries(totals)
@@ -31,7 +31,7 @@ export default function DismissalChart({ data }: Props) {
 
   return (
     <div>
-      <h3 className="text-base font-semibold mb-3">Dismissal Patterns</h3>
+      <h3 className="text-base font-semibold text-lavender-dark mb-3">Dismissal Patterns</h3>
       <div className="flex flex-col sm:flex-row gap-8">
         <div className="flex-shrink-0">
           <ResponsiveContainer width={260} height={220}>
@@ -49,19 +49,25 @@ export default function DismissalChart({ data }: Props) {
                   <Cell key={i} fill={COLORS[i % COLORS.length]} />
                 ))}
               </Pie>
-              <Tooltip formatter={(v) => [`${v} times`, ""]} />
-              <Legend iconType="circle" iconSize={10} />
+              <Tooltip
+                formatter={(v) => [`${v} times`, ""]}
+                contentStyle={{
+                  background: "#f2e9e4",
+                  border: "1px solid #c9ada7",
+                  borderRadius: "8px",
+                  color: "#22223b",
+                }}
+              />
+              <Legend iconType="circle" iconSize={10} wrapperStyle={{ color: "#4a4e69", fontSize: 12 }} />
             </PieChart>
           </ResponsiveContainer>
         </div>
 
         <div className="flex-1">
-          <h4 className="text-sm font-semibold text-gray-600 mb-2">
-            Most dismissed by
-          </h4>
+          <h4 className="text-sm font-semibold text-lavender-muted mb-2">Most dismissed by</h4>
           <table className="min-w-full text-sm">
             <thead>
-              <tr className="text-gray-500 text-xs">
+              <tr className="text-lavender-muted text-xs border-b border-lavender-rose">
                 <th className="text-left py-1">Bowler</th>
                 <th className="text-right py-1 pr-3">Total</th>
                 <th className="text-right py-1 pr-3">B</th>
@@ -71,11 +77,11 @@ export default function DismissalChart({ data }: Props) {
             </thead>
             <tbody>
               {topBowlers.map((d) => (
-                <tr key={d.bowler_name} className="border-t border-gray-100">
-                  <td className="py-1">
+                <tr key={d.bowler_name} className="border-t border-lavender-rose/30">
+                  <td className="py-1 text-lavender-dark">
                     {d.bowler_name}
                     {d.bowler_country && (
-                      <span className="ml-1 text-gray-400 text-xs">({d.bowler_country})</span>
+                      <span className="ml-1 text-lavender-muted text-xs">({d.bowler_country})</span>
                     )}
                   </td>
                   <td className="text-right py-1 pr-3 font-semibold">{d.dismissed_total}</td>

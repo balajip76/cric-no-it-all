@@ -15,14 +15,14 @@ export default function SearchBar() {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search for a player (e.g. Virat Kohli)..."
-        className="w-full px-5 py-3 text-lg rounded-full border-2 border-cricket-green-600
-                   focus:outline-none focus:border-cricket-green-800
-                   bg-white shadow-md"
+        className="w-full px-5 py-3 text-lg rounded-full border-2 border-lavender-muted
+                   focus:outline-none focus:border-lavender-mid
+                   bg-white text-lavender-dark placeholder-lavender-muted shadow-md"
         aria-label="Search players"
         autoComplete="off"
       />
       {loading && (
-        <span className="absolute right-4 top-3.5 text-gray-400 text-sm animate-pulse">
+        <span className="absolute right-4 top-3.5 text-lavender-muted text-sm animate-pulse">
           Searching...
         </span>
       )}

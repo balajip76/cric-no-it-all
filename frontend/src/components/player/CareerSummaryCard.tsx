@@ -15,17 +15,17 @@ export default function CareerSummaryCard({ stats, format }: Props) {
 
   if (!s) {
     return (
-      <div className="rounded-xl border border-gray-200 p-6 text-gray-500 text-sm">
+      <div className="rounded-xl border border-lavender-rose p-6 text-lavender-muted text-sm">
         No career stats available for this format yet.
       </div>
     );
   }
 
   return (
-    <div className="rounded-xl border border-gray-200 p-6 space-y-6">
+    <div className="rounded-xl border border-lavender-rose bg-white p-6 space-y-6">
       {/* Batting */}
       <section>
-        <h3 className="text-sm font-semibold text-cricket-green-700 uppercase tracking-wider mb-3">
+        <h3 className="text-sm font-semibold text-lavender-mid uppercase tracking-wider mb-3">
           Batting
         </h3>
         <div className="grid grid-cols-4 sm:grid-cols-8 gap-3">
@@ -44,8 +44,8 @@ export default function CareerSummaryCard({ stats, format }: Props) {
             ["6s", fmt(s.bat_sixes)],
           ].map(([label, value]) => (
             <div key={label} className="text-center">
-              <div className="text-xs text-gray-500">{label}</div>
-              <div className="text-lg font-semibold">{value}</div>
+              <div className="text-xs text-lavender-muted">{label}</div>
+              <div className="text-lg font-semibold text-lavender-dark">{value}</div>
             </div>
           ))}
         </div>
@@ -54,7 +54,7 @@ export default function CareerSummaryCard({ stats, format }: Props) {
       {/* Bowling */}
       {(s.bowl_wickets != null || s.bowl_matches != null) && (
         <section>
-          <h3 className="text-sm font-semibold text-cricket-green-700 uppercase tracking-wider mb-3">
+          <h3 className="text-sm font-semibold text-lavender-mid uppercase tracking-wider mb-3">
             Bowling
           </h3>
           <div className="grid grid-cols-4 sm:grid-cols-8 gap-3">
@@ -70,8 +70,8 @@ export default function CareerSummaryCard({ stats, format }: Props) {
               ["10W", fmt(s.bowl_ten_wickets)],
             ].map(([label, value]) => (
               <div key={label} className="text-center">
-                <div className="text-xs text-gray-500">{label}</div>
-                <div className="text-lg font-semibold">{value}</div>
+                <div className="text-xs text-lavender-muted">{label}</div>
+                <div className="text-lg font-semibold text-lavender-dark">{value}</div>
               </div>
             ))}
           </div>
@@ -82,17 +82,17 @@ export default function CareerSummaryCard({ stats, format }: Props) {
       <div className="flex flex-wrap gap-8">
         {(s.field_catches != null || s.field_stumpings != null) && (
           <section>
-            <h3 className="text-sm font-semibold text-cricket-green-700 uppercase tracking-wider mb-2">
+            <h3 className="text-sm font-semibold text-lavender-mid uppercase tracking-wider mb-2">
               Fielding
             </h3>
             <div className="flex gap-4">
               <div className="text-center">
-                <div className="text-xs text-gray-500">Catches</div>
+                <div className="text-xs text-lavender-muted">Catches</div>
                 <div className="text-lg font-semibold">{fmt(s.field_catches)}</div>
               </div>
               {s.field_stumpings != null && (
                 <div className="text-center">
-                  <div className="text-xs text-gray-500">Stumpings</div>
+                  <div className="text-xs text-lavender-muted">Stumpings</div>
                   <div className="text-lg font-semibold">{fmt(s.field_stumpings)}</div>
                 </div>
               )}
@@ -101,7 +101,7 @@ export default function CareerSummaryCard({ stats, format }: Props) {
         )}
         {s.capt_matches != null && (
           <section>
-            <h3 className="text-sm font-semibold text-cricket-green-700 uppercase tracking-wider mb-2">
+            <h3 className="text-sm font-semibold text-lavender-mid uppercase tracking-wider mb-2">
               As Captain
             </h3>
             <div className="flex gap-4">
@@ -112,7 +112,7 @@ export default function CareerSummaryCard({ stats, format }: Props) {
                 ["D", fmt(s.capt_draws)],
               ].map(([label, value]) => (
                 <div key={label} className="text-center">
-                  <div className="text-xs text-gray-500">{label}</div>
+                  <div className="text-xs text-lavender-muted">{label}</div>
                   <div className="text-lg font-semibold">{value}</div>
                 </div>
               ))}

@@ -47,14 +47,14 @@ export default function PlayerPage({ params }: Props) {
   if (loading) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-8 animate-pulse">
-        <div className="h-32 bg-gray-200 rounded-2xl mb-6" />
-        <div className="h-10 bg-gray-200 rounded mb-6 w-48" />
+        <div className="h-32 bg-lavender-rose/30 rounded-2xl mb-6" />
+        <div className="h-10 bg-lavender-rose/30 rounded mb-6 w-48" />
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 space-y-4">
-            <div className="h-40 bg-gray-200 rounded-xl" />
-            <div className="h-64 bg-gray-200 rounded-xl" />
+            <div className="h-40 bg-lavender-rose/30 rounded-xl" />
+            <div className="h-64 bg-lavender-rose/30 rounded-xl" />
           </div>
-          <div className="h-[500px] bg-gray-200 rounded-2xl" />
+          <div className="h-[500px] bg-lavender-rose/30 rounded-2xl" />
         </div>
       </div>
     );
@@ -64,14 +64,14 @@ export default function PlayerPage({ params }: Props) {
     if (scrapeStatus === "pending") {
       return (
         <div className="max-w-7xl mx-auto px-4 py-16 text-center">
-          <div className="text-cricket-green-700 text-xl font-semibold mb-2">
+          <div className="text-lavender-mid text-xl font-semibold mb-2">
             Fetching player data...
           </div>
           <p className="text-gray-500">
             Scraping stats from howstat.com. This takes about 30–60 seconds for a new player.
           </p>
           <div className="mt-6 flex justify-center">
-            <div className="w-8 h-8 border-4 border-cricket-green-600 border-t-transparent rounded-full animate-spin" />
+            <div className="w-8 h-8 border-4 border-lavender-mid border-t-transparent rounded-full animate-spin" />
           </div>
         </div>
       );
@@ -102,8 +102,8 @@ export default function PlayerPage({ params }: Props) {
                 onClick={() => setContentTab(tab)}
                 className={`text-sm px-4 py-1.5 rounded-full font-medium transition-colors ${
                   contentTab === tab
-                    ? "bg-cricket-green-700 text-white"
-                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                    ? "bg-lavender-dark text-lavender-cream"
+                    : "bg-white text-lavender-mid border border-lavender-rose hover:bg-lavender-cream"
                 }`}
               >
                 {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -128,7 +128,7 @@ export default function PlayerPage({ params }: Props) {
           )}
 
           {contentTab === "innings" && (
-            <div className="text-gray-500 text-sm py-4">
+            <div className="text-lavender-muted text-sm py-4">
               Innings-by-innings log coming in Phase 2.
             </div>
           )}

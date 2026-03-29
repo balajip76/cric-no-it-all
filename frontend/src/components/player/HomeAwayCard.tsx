@@ -9,26 +9,32 @@ function fmt(v: number | null | undefined, dec = 0) {
   return dec > 0 ? v.toFixed(dec) : String(v);
 }
 
-const VENUE_COLORS: Record<string, string> = {
-  home: "bg-cricket-green-100 border-cricket-green-300",
-  away: "bg-amber-50 border-amber-200",
-  neutral: "bg-gray-50 border-gray-200",
+const VENUE_STYLES: Record<string, string> = {
+  home:    "bg-lavender-dark  text-lavender-cream border-lavender-dark",
+  away:    "bg-lavender-mid   text-lavender-cream border-lavender-mid",
+  neutral: "bg-lavender-rose  text-lavender-dark  border-lavender-rose",
+};
+
+const LABEL_STYLES: Record<string, string> = {
+  home:    "text-lavender-rose",
+  away:    "text-lavender-rose",
+  neutral: "text-lavender-mid",
 };
 
 export default function HomeAwayCard({ data }: Props) {
   if (!data.length)
-    return <div className="text-gray-400 text-sm py-4">No home/away data available.</div>;
+    return <div className="text-lavender-muted text-sm py-4">No home/away data available.</div>;
 
   return (
     <div>
-      <h3 className="text-base font-semibold mb-3">Home / Away Split</h3>
+      <h3 className="text-base font-semibold text-lavender-dark mb-3">Home / Away Split</h3>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {data.map((row) => (
           <div
             key={row.venue_type}
-            className={`rounded-xl border p-4 ${VENUE_COLORS[row.venue_type] ?? "bg-gray-50"}`}
+            className={`rounded-xl border p-4 ${VENUE_STYLES[row.venue_type] ?? "bg-lavender-cream"}`}
           >
-            <h4 className="font-semibold capitalize text-sm text-gray-700 mb-3">
+            <h4 className={`font-semibold capitalize text-sm mb-3 ${LABEL_STYLES[row.venue_type] ?? ""}`}>
               {row.venue_type}
             </h4>
             <div className="grid grid-cols-2 gap-y-2 text-sm">
@@ -43,7 +49,7 @@ export default function HomeAwayCard({ data }: Props) {
                 ["Wickets", fmt(row.bowl_wickets)],
               ].map(([label, value]) => (
                 <div key={label}>
-                  <span className="text-gray-500">{label}: </span>
+                  <span className="opacity-70">{label}: </span>
                   <span className="font-medium">{value}</span>
                 </div>
               ))}

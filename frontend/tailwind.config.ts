@@ -9,21 +9,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "cricket-green": {
-          50: "#f0fdf4",
-          100: "#dcfce7",
-          200: "#bbf7d0",
-          500: "#22c55e",
-          600: "#16a34a",
-          700: "#15803d",
-          800: "#166534",
-          900: "#14532d",
-        },
-        cream: {
-          50: "#fefce8",
-          100: "#fef9c3",
-          200: "#fef08a",
-        },
+        // Soft Lavender palette — https://coolors.co/palette/22223b-4a4e69-9a8c98-c9ada7-f2e9e4
+        "lavender-dark":  "#22223b",  // dark navy/purple — primary text, hero bg
+        "lavender-mid":   "#4a4e69",  // muted purple — headings, active states
+        "lavender-muted": "#9a8c98",  // mauve — secondary text, borders
+        "lavender-rose":  "#c9ada7",  // dusty rose — accents, highlights
+        "lavender-cream": "#f2e9e4",  // cream — page background, card bg
       },
     },
   },

@@ -33,20 +33,20 @@ export default function ByGroundTable({ data }: Props) {
     <th
       onClick={() => toggle(k)}
       className="px-3 py-2 text-xs font-semibold cursor-pointer select-none whitespace-nowrap
-                 hover:bg-gray-100 transition-colors"
+                 hover:bg-lavender-rose/20 transition-colors"
     >
       {label} {sortKey === k ? (asc ? "↑" : "↓") : ""}
     </th>
   );
 
   if (!data.length)
-    return <div className="text-gray-400 text-sm py-4">No ground data available.</div>;
+    return <div className="text-lavender-muted text-sm py-4">No ground data available.</div>;
 
   return (
     <div className="overflow-x-auto">
-      <h3 className="text-base font-semibold mb-3">Batting by Ground</h3>
+      <h3 className="text-base font-semibold text-lavender-dark mb-3">Batting by Ground</h3>
       <table className="min-w-full text-sm">
-        <thead className="bg-gray-50 text-gray-600 text-left">
+        <thead className="bg-lavender-cream text-lavender-mid text-left border-b border-lavender-rose">
           <tr>
             <Th k="ground" label="Ground" />
             <Th k="bat_matches" label="Mat" />
@@ -59,8 +59,8 @@ export default function ByGroundTable({ data }: Props) {
         </thead>
         <tbody>
           {sorted.slice(0, 15).map((row) => (
-            <tr key={row.ground} className="border-b border-gray-100 hover:bg-gray-50">
-              <td className="px-3 py-2 font-medium">{row.ground}</td>
+            <tr key={row.ground} className="border-b border-lavender-rose/30 hover:bg-lavender-cream/60">
+              <td className="px-3 py-2 font-medium text-lavender-dark">{row.ground}</td>
               <td className="px-3 py-2 text-center">{fmt(row.bat_matches)}</td>
               <td className="px-3 py-2 text-center">{fmt(row.bat_innings)}</td>
               <td className="px-3 py-2 text-center">{fmt(row.bat_runs)}</td>

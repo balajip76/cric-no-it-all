@@ -15,15 +15,15 @@ interface Props {
 
 export default function FormatTabs({ active, onChange }: Props) {
   return (
-    <div className="flex gap-1 mb-6 border-b border-gray-200">
+    <div className="flex gap-1 mb-6 border-b border-lavender-rose">
       {FORMATS.map((f) => (
         <button
           key={f.value}
           onClick={() => onChange(f.value)}
           className={`px-5 py-2.5 text-sm font-semibold rounded-t-lg transition-colors ${
             active === f.value
-              ? "bg-cricket-green-700 text-white border-b-2 border-cricket-green-700"
-              : "text-gray-600 hover:bg-gray-100"
+              ? "bg-lavender-dark text-lavender-cream border-b-2 border-lavender-dark"
+              : "text-lavender-mid hover:bg-lavender-rose/20"
           }`}
         >
           {f.label}
